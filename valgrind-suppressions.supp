@@ -1,0 +1,1089 @@
+# SDL and SDL_image functions
+{
+   SDL_VideoInit leak
+   Memcheck:Leak
+   ...
+   fun:SDL_VideoInit
+}
+{
+   SDL_image Cond
+   Memcheck:Cond
+   ...
+   fun:IMG_LoadTyped_RW
+}
+{
+   SDL_PollEvent Cond
+   Memcheck:Cond
+   ...
+   fun:SDL_PollEvent
+}
+
+
+
+# X11 functions (called from SDL or SDL_image)
+{
+   XGetDefault leak
+   Memcheck:Leak
+   ...
+   fun:XGetDefault
+}
+{
+   _XOpenLC leak
+   Memcheck:Leak
+   ...
+   fun:_XOpenLC
+}
+{
+   XCreatePixmap leak
+   Memcheck:Leak
+   ...
+   fun:XCreatePixmap
+}
+{
+   _XNoticeCreateBitmap leak
+   Memcheck:Leak
+   ...
+   fun:_XNoticeCreateBitmap
+}
+
+
+
+# For valgrind leaks caused by SDL
+{
+   libdl
+   Memcheck:Leak
+   ...
+   fun:_dl_init
+   ...
+}
+{
+   libdl
+   Memcheck:Leak
+   ...
+   fun:_dl_open
+   ...
+}
+
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_hook_load
+   obj:/usr/lib/x86_64-linux-gnu/alsa-lib/libasound_module_pcm_pulse.so
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:pa_xmalloc
+   fun:pa_tls_new
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   fun:pa_run_once
+   fun:pa_thread_self
+   fun:pa_threaded_mainloop_wait
+   fun:pa_simple_new
+   obj:/usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.3
+   fun:SDL_AudioInit
+   fun:SDL_InitSubSystem
+   fun:SDL_Init
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:pa_xmalloc
+   fun:pa_tls_new
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   fun:pa_run_once
+   fun:pa_cstrerror
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   fun:pa_mainloop_dispatch
+   fun:pa_mainloop_iterate
+   fun:pa_mainloop_run
+   obj:/usr/lib/x86_64-linux-gnu/libpulse.so.0.13.5
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:strdup
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_update_r
+   fun:snd_config_update
+   fun:snd_pcm_open
+   obj:/usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.3
+   fun:SDL_AudioInit
+   fun:SDL_InitSubSystem
+   fun:SDL_Init
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:strdup
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_update_r
+   fun:snd_config_update
+   fun:snd_pcm_open
+   obj:/usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.3
+   fun:SDL_AudioInit
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:strdup
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_hook_load
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_update_r
+   fun:snd_config_update
+   fun:snd_pcm_open
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:pa_xmalloc
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   fun:pa_log_set_ident
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   fun:pa_log_levelv_meta
+   fun:pa_log_level_meta
+   fun:pa_mempool_new
+   fun:pa_context_new_with_proplist
+   fun:pa_simple_new
+   obj:/usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.3
+   fun:SDL_AudioInit
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_hook_load
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_update_r
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_hook_load
+   obj:/usr/lib/x86_64-linux-gnu/alsa-lib/libasound_module_pcm_pulse.so
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_searcha_hooks
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:strdup
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_update_r
+   fun:snd_config_update
+   fun:snd_pcm_open
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_update_r
+   fun:snd_config_update
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_update_r
+   fun:snd_config_update
+   fun:snd_pcm_open
+   obj:/usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.3
+   fun:SDL_AudioInit
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_hook_load
+   obj:/usr/lib/x86_64-linux-gnu/alsa-lib/libasound_module_pcm_pulse.so
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_searcha_hooks
+   fun:snd_config_searchva_hooks
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:pa_xmalloc
+   fun:pa_queue_push
+   fun:pa_pstream_send_packet
+   fun:pa_pstream_send_tagstruct_with_creds
+   obj:/usr/lib/x86_64-linux-gnu/libpulse.so.0.13.5
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   fun:pa_mainloop_dispatch
+   fun:pa_mainloop_iterate
+   fun:pa_mainloop_run
+   obj:/usr/lib/x86_64-linux-gnu/libpulse.so.0.13.5
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_hook_load
+   obj:/usr/lib/x86_64-linux-gnu/alsa-lib/libasound_module_pcm_pulse.so
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_searcha_hooks
+   fun:snd_config_searchva_hooks
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:asyncns_wait
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   fun:pa_mainloop_dispatch
+   fun:pa_mainloop_iterate
+   obj:/usr/lib/x86_64-linux-gnu/alsa-lib/libasound_module_pcm_pulse.so
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_searcha_hooks
+   fun:snd_config_searchva_hooks
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_search_definition
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:pa_xmalloc
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   fun:pa_cstrerror
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   fun:pa_mainloop_dispatch
+   fun:pa_mainloop_iterate
+   obj:/usr/lib/x86_64-linux-gnu/alsa-lib/libasound_module_pcm_pulse.so
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_searcha_hooks
+   fun:snd_config_searchva_hooks
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_update_r
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_hook_load
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:strdup
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.3
+   fun:SDL_AudioInit
+   fun:SDL_InitSubSystem
+   fun:SDL_Init
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:strdup
+   fun:snd_user_file
+   fun:snd_config_update_r
+   fun:snd_config_update
+   fun:snd_pcm_open
+   obj:/usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.3
+   fun:SDL_AudioInit
+   fun:SDL_InitSubSystem
+   fun:SDL_Init
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:pa_xmalloc
+   fun:pa_xmemdup
+   fun:pa_flist_new_with_name
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   fun:pa_run_once
+   fun:pa_pstream_send_packet
+   fun:pa_pstream_send_tagstruct_with_creds
+   obj:/usr/lib/x86_64-linux-gnu/libpulse.so.0.13.5
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   fun:pa_mainloop_dispatch
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:pa_xmalloc
+   fun:pa_xmemdup
+   fun:pa_flist_new_with_name
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   fun:pa_run_once
+   fun:pa_queue_push
+   fun:pa_pstream_send_packet
+   fun:pa_pstream_send_tagstruct_with_creds
+   obj:/usr/lib/x86_64-linux-gnu/libpulse.so.0.13.5
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_update_r
+   fun:snd_config_update
+   fun:snd_pcm_open
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:strdup
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_update_r
+   fun:snd_config_update
+   fun:snd_pcm_open
+   obj:/usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.3
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:pa_xmalloc
+   fun:pa_xmemdup
+   fun:pa_flist_new_with_name
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   fun:pa_run_once
+   fun:pa_hashmap_put
+   fun:pa_proplist_sets
+   fun:pa_context_new_with_proplist
+   fun:pa_simple_new
+   obj:/usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.3
+   fun:SDL_AudioInit
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_update_r
+   fun:snd_config_update
+   fun:snd_pcm_open
+   obj:/usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.3
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_hook_load
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_update_r
+   fun:snd_config_update
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:asyncns_wait
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   fun:pa_mainloop_dispatch
+   fun:pa_mainloop_iterate
+   fun:pa_mainloop_run
+   obj:/usr/lib/x86_64-linux-gnu/libpulse.so.0.13.5
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   fun:start_thread
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:pa_xmalloc
+   fun:pa_xmemdup
+   fun:pa_flist_new_with_name
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   fun:pa_run_once
+   fun:pa_pdispatch_register_reply
+   obj:/usr/lib/x86_64-linux-gnu/libpulse.so.0.13.5
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   fun:pa_mainloop_dispatch
+   fun:pa_mainloop_iterate
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:calloc
+   fun:pa_xmalloc0
+   fun:pa_thread_self
+   fun:pa_threaded_mainloop_wait
+   fun:pa_simple_new
+   obj:/usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.3
+   fun:SDL_AudioInit
+   fun:SDL_InitSubSystem
+   fun:SDL_Init
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:calloc
+   fun:SDL_CreateMutex
+   obj:/usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.3
+   fun:SDL_CreateThread
+   obj:/usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.3
+   obj:/usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.3
+   fun:SDL_InitSubSystem
+   fun:SDL_Init
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:pa_xmalloc
+   fun:pa_hashmap_put
+   fun:pa_proplist_sets
+   fun:pa_context_new_with_proplist
+   fun:pa_simple_new
+   obj:/usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.3
+   fun:SDL_AudioInit
+   fun:SDL_InitSubSystem
+   fun:SDL_Init
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_hook_load
+   obj:/usr/lib/x86_64-linux-gnu/alsa-lib/libasound_module_pcm_pulse.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.3
+   fun:SDL_AudioInit
+   fun:SDL_InitSubSystem
+   fun:SDL_Init
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:strdup
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_update_r
+   fun:snd_config_update
+   fun:snd_pcm_open
+   obj:/usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.3
+   fun:SDL_AudioInit
+   fun:SDL_InitSubSystem
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:pa_xmalloc
+   fun:pa_pdispatch_register_reply
+   obj:/usr/lib/x86_64-linux-gnu/libpulse.so.0.13.5
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   fun:pa_mainloop_dispatch
+   fun:pa_mainloop_iterate
+   fun:pa_mainloop_run
+   obj:/usr/lib/x86_64-linux-gnu/libpulse.so.0.13.5
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   fun:start_thread
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_hook_load
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_update_r
+   fun:snd_config_update
+   fun:snd_pcm_open
+   obj:/usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.3
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:calloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_update_r
+   fun:snd_config_update
+   fun:snd_pcm_open
+   obj:/usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.3
+   fun:SDL_AudioInit
+   fun:SDL_InitSubSystem
+   fun:SDL_Init
+   fun:main
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:calloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_hook_load
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_update_r
+   fun:snd_config_update
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:calloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_hook_load
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_update_r
+   fun:snd_config_update
+   fun:snd_pcm_open
+   obj:/usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.3
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:calloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_hook_load
+   obj:/usr/lib/x86_64-linux-gnu/alsa-lib/libasound_module_pcm_pulse.so
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_searcha_hooks
+   fun:snd_config_searchva_hooks
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_hook_load
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_update_r
+   fun:snd_config_update
+   fun:snd_pcm_open
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   fun:pa_xmalloc
+   fun:pa_pstream_send_packet
+   fun:pa_pstream_send_tagstruct_with_creds
+   obj:/usr/lib/x86_64-linux-gnu/libpulse.so.0.13.5
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   fun:pa_mainloop_dispatch
+   fun:pa_mainloop_iterate
+   fun:pa_mainloop_run
+   obj:/usr/lib/x86_64-linux-gnu/libpulse.so.0.13.5
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:calloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_update_r
+   fun:snd_config_update
+   fun:snd_pcm_open
+   obj:/usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.3
+   fun:SDL_AudioInit
+   fun:SDL_InitSubSystem
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:calloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_update_r
+   fun:snd_config_update
+   fun:snd_pcm_open
+   obj:/usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.3
+   fun:SDL_AudioInit
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:calloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_update_r
+   fun:snd_config_update
+   fun:snd_pcm_open
+   obj:/usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.3
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:calloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_update_r
+   fun:snd_config_update
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:calloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_update_r
+   fun:snd_config_update
+   fun:snd_pcm_open
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:calloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_hook_load
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_update_r
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:calloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_hook_load
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:calloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_hook_load
+   obj:/usr/lib/x86_64-linux-gnu/alsa-lib/libasound_module_pcm_pulse.so
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_searcha_hooks
+   fun:snd_config_searchva_hooks
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:calloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_hook_load
+   obj:/usr/lib/x86_64-linux-gnu/alsa-lib/libasound_module_pcm_pulse.so
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_searcha_hooks
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:calloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_hook_load
+   obj:/usr/lib/x86_64-linux-gnu/alsa-lib/libasound_module_pcm_pulse.so
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:calloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:calloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_update_r
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:calloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_hook_load
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_update_r
+   fun:snd_config_update
+   fun:snd_pcm_open
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_update_r
+   fun:snd_config_update
+   fun:snd_pcm_open
+   obj:/usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.3
+   fun:SDL_AudioInit
+   fun:SDL_InitSubSystem
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:malloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_update_r
+   fun:snd_config_update
+   fun:snd_pcm_open
+   obj:/usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.3
+   fun:SDL_AudioInit
+   fun:SDL_InitSubSystem
+   fun:SDL_Init
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:calloc
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   obj:/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0
+   fun:snd_config_update_r
+   fun:snd_config_update
+   fun:snd_pcm_open
+   obj:/usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.3
+   fun:SDL_AudioInit
+   fun:SDL_InitSubSystem
+   fun:SDL_Init
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:calloc
+   fun:pa_xmalloc0
+   fun:pa_flist_new_with_name
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   fun:pa_run_once
+   fun:pa_hashmap_put
+   fun:pa_proplist_sets
+   fun:pa_context_new_with_proplist
+   fun:pa_simple_new
+   obj:/usr/lib/x86_64-linux-gnu/libSDL-1.2.so.0.11.3
+   fun:SDL_AudioInit
+   fun:SDL_InitSubSystem
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:calloc
+   fun:pa_xmalloc0
+   fun:pa_flist_new_with_name
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   fun:pa_run_once
+   fun:pa_pstream_send_packet
+   fun:pa_pstream_send_tagstruct_with_creds
+   obj:/usr/lib/x86_64-linux-gnu/libpulse.so.0.13.5
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   fun:pa_mainloop_dispatch
+   fun:pa_mainloop_iterate
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:calloc
+   fun:pa_xmalloc0
+   fun:pa_flist_new_with_name
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   fun:pa_run_once
+   fun:pa_queue_push
+   fun:pa_pstream_send_packet
+   fun:pa_pstream_send_tagstruct_with_creds
+   obj:/usr/lib/x86_64-linux-gnu/libpulse.so.0.13.5
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   fun:pa_mainloop_dispatch
+}
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Leak
+   fun:calloc
+   fun:pa_xmalloc0
+   fun:pa_flist_new_with_name
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   fun:pa_run_once
+   fun:pa_pdispatch_register_reply
+   obj:/usr/lib/x86_64-linux-gnu/libpulse.so.0.13.5
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   obj:/usr/lib/x86_64-linux-gnu/libpulsecommon-1.1.so
+   fun:pa_mainloop_dispatch
+   fun:pa_mainloop_iterate
+   fun:pa_mainloop_run
+}
